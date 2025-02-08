@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommender System</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            background: linear-gradient(90deg, #1e3c72, #2a5298);
+            border: none;
+        }
+        .navbar-brand, .navbar-nav li a {
+            color: white !important;
+        }
+        .navbar-nav li a:hover {
+            color: #ada8e1 !important;
+        }
+        .card {
+            background-color: #2d3436;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+        }
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .card-body p {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .custom-btn {
+            background-color: #96bedc; /* Change the yellow color here */
+            border-color: #18a8a3;
+        }
+        .custom-btn:hover {
+            background-color: #0577ac; /* Darker yellow for hover effect */
+            border-color: #f273f2;
+        }
+        /* Footer styling */
+        .footer {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            color: white;
+            text-align: right;
+        }
+        .footer a {
+            color: #aeb2f3;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="#">📚 Book Recommender</a>
+        <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/recommend">Recommend</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Book Recommendations</h1>
+                <form action="/recommend_books" method="post">
+                    <input name="user_input" type="text" class="form-control" placeholder="Enter book name"><br>
+                    <input type="submit" class="btn btn-lg custom-btn" value="Recommend">
+                </form>
+            </div>
+
+            <!-- If Books are Found -->
+            {% if data %}
+                <div class="col-md-12" style="margin-top: 30px;">
+                    <h2>Recommended Books</h2>
+                    <div class="row">
+                        {% for i in data %}
+                            <div class="col-md-3" style="margin-top: 50px;">
+                                <div class="card">
+                                    <img src="{{i[2]}}" alt="Book Cover">
+                                    <div class="card-body">
+                                        <p>{{i[0]}}</p>
+                                        <h4>Author: {{i[1]}}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% else %}
+                <!-- No books found message after user input -->
+                {% if request.method == 'POST' %}
+                    <div class="col-md-12" style="margin-top: 30px;">
+                        <h2>No books found. Please try another search!</h2>
+                    </div>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Footer with your name and links after recommendations -->
+    <div class="footer">
+        <p>Created by <strong>Abhay</strong></p>
+        <a href="https://www.linkedin.com/in/abhay-singh-050a5b293/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/AbhaySingh71" target="_blank">GitHub</a>
+    </div>
+</body>
+</html>
