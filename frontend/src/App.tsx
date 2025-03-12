@@ -9,7 +9,7 @@ import BookCard from "./BookCard";
 
 function App() {
   async function getPopularBooks() {
-    let data: any = await axios.get("http://127.0.0.1:5000");
+    let data: any = await axios.get("https://bookverse-server.onrender.com")
     setBooks(data.data.books);
     return data.data.books;
   }
@@ -34,7 +34,7 @@ function App() {
     };
     let responseStatus: number = 200;
     let recommenddedBook = await axios
-      .post("http://127.0.0.1:5000/recommend_books", data)
+      .post("https://bookverse-server.onrender.com/recommend_books", data)
       .catch((e) => {
         responseStatus = e.status;
         setErrorMsg(e.response.data.error)
