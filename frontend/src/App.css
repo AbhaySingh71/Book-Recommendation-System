@@ -22,3 +22,13 @@
   justify-content: space-around;
   align-items: center;
 }
+
+.books-grid {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.books-card {
+  background-color: yellow;
+}
