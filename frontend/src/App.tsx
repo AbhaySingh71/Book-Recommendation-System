@@ -14,8 +14,10 @@ function App() {
     return data.data.books;
   }
   type Book = {
-    author: string;
-    title: string;
+    author: string
+    title: string
+    rating: number
+    image: string
   };
 
   let [books, setBooks] = useState<Book[]>([]);
@@ -41,9 +43,9 @@ function App() {
       });
     setSearchVal("");
     if (responseStatus == 200) {
-      console.log(recommenddedBook.data.recommendations)
+      console.log((recommenddedBook as any).data.recommendations)
       setMainHead(["The", "Recommendations"])
-      setBooks(recommenddedBook.data.recommendations)
+      setBooks((recommenddedBook as any).data.recommendations)
       setLoadBooks(true)
     } else {
       setBooks([])
@@ -117,7 +119,7 @@ function App() {
               freeSolo
               options={topBooks}
               value={initSearchVal}
-              onChange={(event) => changeSearchVal(event.target.innerText)}
+              onChange={(event) => changeSearchVal((event.target as HTMLElement).innerText)}
               sx={{ width: 400 }}
               renderInput={(params) => (
                 <TextField

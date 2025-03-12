@@ -8,7 +8,16 @@ import CardActions from "@mui/material/CardActions";
 import StarIcon from "@mui/icons-material/Star";
 import './App.css'
 
-function BookCard({ sample_book }) {
+type BookProps = {
+  sample_book: {
+    title: string
+    author: string
+    image: string
+    rating: number
+  }
+}
+
+function BookCard({ sample_book}: BookProps ) {
   return (
     <Card
       sx={{
@@ -17,7 +26,6 @@ function BookCard({ sample_book }) {
         padding: "5px",
         transition: "transform 0.2s ease-in-out",
         "&:hover": {
-          // border: "1px solid black",
           boxShadow: "0px 0px 15px grey",
           transform: "scale(1.03)"
         }
