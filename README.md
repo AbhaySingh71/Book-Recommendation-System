@@ -88,7 +88,7 @@
   <h2>🚀 Deployment</h2>
     <p>The project is deployed on <strong>Render</strong>. You can access it here:</p>
     <p align="center">
-        <a href="https://book-recommendation-system-e9zw.onrender.com/" target="_blank">
+        <a href="https://bookverse-yqux.onrender.com/" target="_blank">
             <strong>🌐 Open Live Demo</strong>
         </a>
     </p>
