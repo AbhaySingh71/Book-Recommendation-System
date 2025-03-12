@@ -1,0 +1,34 @@
+.main-heading {
+  font-family: "Noto Serif Display", serif;
+  font-weight: 600;
+}
+
+.main-heading-box {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-box {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.books-grid {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.books-card {
+  background-color: yellow;
+}
